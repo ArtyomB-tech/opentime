@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>OpenTime</title>
+</head>
+<body>
+<header>
+    <h1>OpenTime</h1>
+</header>
+<main>
+    <form>
+        <input type="text" id="teacher-name-field" placeholder="Name">
+        <input type="email" id="teacher-email-field" placeholder="Email">
+        <input type="password" id="teacher-password-field" placeholder="Password">
+        <button type="button" id="teacher-sign-up-button2">Sign Up</button>
+    </form>
+</main>
+<footer>
+    <p>&copy; ArtyomB production 2026</p>
+</footer>
+<script type="module">
+    import { auth } from "./firebase.js"
+    import { createUserWithEmailAndPassword, updateProfile } from "https://www.gstatic.com/firebasejs/12.18.0/firebase-auth.js"
+
+    document.getElementById("teacher-sign-up-button2").addEventListener("click", teacherSignUp )
+    async function teacherSignUp() {
+        const teacherName = document.getElementById("teacher-name-field").value
+        const teacherEmail = document.getElementById("teacher-email-field").value
+        const teacherPassword = document.getElementById("teacher-password-field").value
+        try {
+             await createUserWithEmailAndPassword(auth, teacherEmail, teacherPassword)
+            const user = auth.currentUser
+            await updateProfile( user, {
+                displayName: teacherName
+            })
+            alert("Teacher account created successfully")
+            window.location.href = "teacher-profile.html"
+        } catch (error) {
+            alert("Error: " + error.message )
+        }
+    }
+</script>
+</body>
+</html>

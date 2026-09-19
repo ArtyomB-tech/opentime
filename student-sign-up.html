@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>OpenTime</title>
+</head>
+<body>
+<header>
+    <h1>OpenTime</h1>
+</header>
+<main>
+    <form>
+        <input type="text" id="student-name-field" placeholder="Name">
+        <input type="email" id="student-email-field" placeholder="Email">
+        <input type="password" id="student-password-field" placeholder="Password">
+        <button type="button" id="student-sign-up-button2">Sign Up</button>
+    </form>
+</main>
+<footer>
+    <p>&copy; ArtyomB production 2026</p>
+</footer>
+<script type="module">
+    import { auth } from "./firebase.js"
+    import { createUserWithEmailAndPassword, updateProfile } from "https://www.gstatic.com/firebasejs/12.18.0/firebase-auth.js"
+
+    document.getElementById("student-sign-up-button2").addEventListener("click", studentSignUp )
+    async function studentSignUp() {
+        const studentName = document.getElementById("student-name-field").value
+        const studentEmail = document.getElementById("student-email-field").value
+        const studentPassword = document.getElementById("student-password-field").value
+        try {
+             await createUserWithEmailAndPassword(auth, studentEmail, studentPassword)
+            const user = auth.currentUser
+            await updateProfile( user, {
+                displayName: studentName
+            })
+            alert("Student account created successfully")
+        } catch (error) {
+            alert("Error: " + error.message )
+        }
+    }
+</script>
+</body>
+</html>

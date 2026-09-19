@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Sign Up</title>
+</head>
+<body>
+<nav>
+    <button id="student-sign-up-button">Student</button>
+    <button id="teacher-sign-up-button">Teacher</button>
+</nav>
+<script>
+    document.getElementById("student-sign-up-button").addEventListener("click",  () => {
+        window.location.href = "/student-sign-up.html"
+    })
+    document.getElementById("teacher-sign-up-button").addEventListener("click",  () => {
+        window.location.href = "/teacher-sign-up.html"
+    })
+</script>
+</body>
+</html>

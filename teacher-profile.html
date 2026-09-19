@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>OpenTime-your acccount</title>
+    <script src="teacher-profile.js" type="module" defer></script>
+</head>
+<body>
+<header>
+    <h2>Your teacher profile</h2>
+</header>
+<main>
+    <nav>
+        <button type="button" id="info-tab-button" data-tab="info">Info</button>
+        <button type="button" id="consultations-tab-button" data-tab="consultations">Consultations</button>
+        <button type="button" id="settings-tab-button" data-tab="settings">Settings</button>
+    </nav>
+    <div id="info-tab" data-tab="info" class="tab">
+        <p id="name-place"></p>
+    </div>
+    <div id="consultations-tab" data-tab="consultations" style="display: none;" class="tab">
+        Consultations Content
+    </div>
+    <div id="settings-tab" data-tab="settings" style="display: none;" class="tab">
+        Settings Content
+    </div>
+</main>
+</body>
+</html>

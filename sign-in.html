@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Sign In</title>
+</head>
+<body>
+    <form>
+        <input type="email" id="email-field2" placeholder="Email">
+        <input type="password" id="password-field2" placeholder="Password">
+        <button type="submit" id="sign-in-button2">Sign In</button>
+    </form>
+<script>
+    import { auth } from "./firebase.js"
+    import { signInWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/12.18.0/firebase-auth.js"
+
+    document.getElementById('sign-in-button2').addEventListener("click", signIn )
+    async function signIn(){
+        const email = document.getElementById('email-field2').value
+        const password = document.getElementById('password-field2').value
+        try {
+            await signInWithEmailAndPassword(auth, email, password)
+            alert("Signed in successfully!")
+            window.location.href = '/profile.html'
+        } catch (error) {
+            alert("Error:" + error.message)
+        }
+    }
+</script>
+</body>
+</html>
